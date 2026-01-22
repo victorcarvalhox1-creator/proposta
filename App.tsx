@@ -3,14 +3,13 @@ import React, { useState, useMemo, useRef } from 'react';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { PricingData, CalculationResult } from './types';
-import { generateProposalJustification } from './services/geminiService';
 import { 
   BASE_PRICE, 
   DP_FEE,
   CITY_COMPLEXITY_FEE, 
   SALES_VOLUME_INCREMENT, 
   ICONS,
-  LOGO_SVG
+  DEFAULT_LOGO_URL
 } from './constants';
 
 export default function App() {
@@ -26,8 +25,6 @@ export default function App() {
 
   const [uploadedLogo, setUploadedLogo] = useState<string | null>(null);
   const [isExporting, setIsExporting] = useState(false);
-  const [justification, setJustification] = useState<string>('');
-  const [isGeneratingAi, setIsGeneratingAi] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
   const exportAreaRef = useRef<HTMLDivElement>(null);
@@ -82,19 +79,6 @@ export default function App() {
         setUploadedLogo(reader.result as string);
       };
       reader.readAsDataURL(file);
-    }
-  };
-
-  const handleGenerateJustification = async () => {
-    setIsGeneratingAi(true);
-    try {
-      const text = await generateProposalJustification(data, results);
-      setJustification(text);
-    } catch (error) {
-      console.error(error);
-      setJustification("Erro ao conectar com o serviço de IA.");
-    } finally {
-      setIsGeneratingAi(false);
     }
   };
 
@@ -173,13 +157,13 @@ export default function App() {
             />
             <div 
               onClick={() => fileInputRef.current?.click()}
-              className="bg-slate-50 p-4 rounded-2xl border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors group relative"
+              className="bg-slate-50 p-4 rounded-2xl border border-slate-100 cursor-pointer hover:bg-slate-100 transition-colors group relative overflow-hidden"
               title="Clique para carregar sua logomarca"
             >
               {uploadedLogo ? (
-                <img src={uploadedLogo} alt="Logo Cliente" className="h-12 w-auto object-contain" />
+                <img src={uploadedLogo} alt="Logo Cliente" className="h-16 w-auto object-contain" />
               ) : (
-                <LOGO_SVG />
+                <img src={DEFAULT_LOGO_URL} alt="Logo Padrão" className="h-16 w-auto object-contain" />
               )}
               <div className="absolute inset-0 bg-white/60 opacity-0 group-hover:opacity-100 flex items-center justify-center rounded-2xl transition-opacity">
                 <ICONS.Upload />
@@ -311,47 +295,6 @@ export default function App() {
               </div>
             </div>
 
-            {/* AI Justification Section */}
-            <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-3xl shadow-sm border border-indigo-500/50 p-8 text-white">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white/10 rounded-lg text-indigo-100">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                  </div>
-                  <h2 className="text-xl font-extrabold text-white">Análise Estratégica (IA)</h2>
-                </div>
-                <button 
-                  onClick={handleGenerateJustification}
-                  disabled={isGeneratingAi}
-                  className="px-4 py-2 bg-white text-indigo-700 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-indigo-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                >
-                  {isGeneratingAi ? (
-                    <>
-                      <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                      Gerando...
-                    </>
-                  ) : (
-                    <>Gerar Justificativa</>
-                  )}
-                </button>
-              </div>
-
-              {justification ? (
-                 <div className="bg-white/10 rounded-2xl p-6 border border-white/10">
-                    <textarea 
-                      value={justification}
-                      onChange={(e) => setJustification(e.target.value)}
-                      className="w-full bg-transparent border-none focus:ring-0 text-indigo-50 text-sm leading-relaxed resize-none h-48 placeholder-indigo-300/50 scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
-                      placeholder="A justificativa gerada pela IA aparecerá aqui..."
-                    />
-                 </div>
-              ) : (
-                <div className="text-center py-8 bg-black/10 rounded-2xl border border-white/5 border-dashed">
-                  <p className="text-indigo-200 text-sm font-medium">Clique no botão acima para gerar uma justificativa personalizada para esta proposta.</p>
-                </div>
-              )}
-            </div>
-
             {/* Exclusões */}
             <div className="bg-slate-900 rounded-3xl p-8 shadow-xl border border-slate-800 relative overflow-hidden">
                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
@@ -469,7 +412,7 @@ export default function App() {
               {uploadedLogo ? (
                 <img src={uploadedLogo} alt="Logo Cliente" className="h-10 w-auto object-contain" />
               ) : (
-                <LOGO_SVG />
+                <img src={DEFAULT_LOGO_URL} alt="Logo Padrão" className="h-10 w-auto object-contain" />
               )}
            </div>
            <p className="text-slate-400 text-[9px] font-black uppercase tracking-[0.4em]">

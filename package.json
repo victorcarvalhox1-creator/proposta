@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@google/genai": "latest",
     "html2canvas": "^1.4.1",
     "jspdf": "latest",
     "react": "^18.3.1",

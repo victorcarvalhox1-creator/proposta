@@ -5,16 +5,7 @@ export const CITY_COMPLEXITY_FEE = 400.00;
 export const DIAGNOSIS_FIXED_FEE = 2000.00;
 export const SALES_VOLUME_INCREMENT = 500.00; 
 
-export const LOGO_SVG = () => (
-  <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-10 w-auto">
-    <path d="M20 10L40 40H0L20 10Z" fill="#2b5a91"/>
-    <rect x="45" y="15" width="10" height="25" rx="2" fill="#1e3a5f"/>
-    <rect x="60" y="10" width="10" height="30" rx="2" fill="#2b5a91"/>
-    <rect x="75" y="20" width="10" height="20" rx="2" fill="#1e3a5f"/>
-    <text x="95" y="38" fontFamily="Inter, sans-serif" fontWeight="800" fontSize="24" fill="#1e3a5f">PRICING</text>
-    <text x="95" y="52" fontFamily="Inter, sans-serif" fontWeight="500" fontSize="10" fill="#2b5a91" letterSpacing="0.2em">CONSULTANCY</text>
-  </svg>
-);
+export const DEFAULT_LOGO_URL = "https://dvzuzslkpcyaupkfkmen.supabase.co/storage/v1/object/sign/midias/WhatsApp%20Image%202026-01-22%20at%2011.35.17.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kMzU2Y2YzNi04NzBhLTRlMGItYjc0Yy00ZWY5NWZjOWMxODAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJtaWRpYXMvV2hhdHNBcHAgSW1hZ2UgMjAyNi0wMS0yMiBhdCAxMS4zNS4xNy5qcGVnIiwiaWF0IjoxNzY5MTAzNzc0LCJleHAiOjE5MjY3ODM3NzR9.1VA4QFACgltGrweHV1s82KJU43X0Ysy3VpiEkhm53Ao";
 
 export const ICONS = {
   Car: () => (
