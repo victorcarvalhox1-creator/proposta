@@ -251,7 +251,7 @@ export default function App() {
                   <div className="p-2 bg-amber-100 rounded-lg text-amber-700">
                     <ICONS.User />
                   </div>
-                  <h3 className="text-sm font-black text-amber-900 uppercase tracking-widest">Equipe Interna (Prerrequisito)</h3>
+                  <h3 className="text-sm font-black text-amber-900 uppercase tracking-widest">Equipe Interna (Pré-requisito)</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-white p-4 rounded-xl shadow-sm border border-amber-200/50">
