@@ -7,6 +7,7 @@ export interface PricingData {
   hasDifferentCity: boolean;
   includeTravel: boolean;
   hasDP: boolean;
+  includeSystemParametrization: boolean;
 }
 
 export interface CalculationResult {
@@ -17,6 +18,7 @@ export interface CalculationResult {
   complexityAddition: number;
   totalMonthly: number;
   diagnosisFee: number;
+  systemParametrizationFee: number;
   requiredStaff: {
     fiscal: number;
     dp: number;

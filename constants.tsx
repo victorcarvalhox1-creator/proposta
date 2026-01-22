@@ -3,7 +3,8 @@ export const BASE_PRICE = 5000.00;
 export const DP_FEE = 1500.00;     
 export const CITY_COMPLEXITY_FEE = 400.00;
 export const DIAGNOSIS_FIXED_FEE = 2000.00;
-export const SALES_VOLUME_INCREMENT = 500.00; 
+export const SALES_VOLUME_INCREMENT = 500.00;
+export const SYSTEM_PARAMETRIZATION_FEE = 15000.00;
 
 export const DEFAULT_LOGO_URL = "https://dvzuzslkpcyaupkfkmen.supabase.co/storage/v1/object/sign/midias/WhatsApp%20Image%202026-01-22%20at%2011.35.17.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kMzU2Y2YzNi04NzBhLTRlMGItYjc0Yy00ZWY5NWZjOWMxODAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJtaWRpYXMvV2hhdHNBcHAgSW1hZ2UgMjAyNi0wMS0yMiBhdCAxMS4zNS4xNy5qcGVnIiwiaWF0IjoxNzY5MTA3MzkxLCJleHAiOjE4MDA2NDMzOTF9._3w1UbEy-tNtTF1M6RJsaKTeZVQobHsWdjAW_8jSt58";
 
@@ -28,6 +29,12 @@ export const ICONS = {
   Upload: () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+    </svg>
+  ),
+  Settings: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+      <circle cx="12" cy="12" r="3"/>
     </svg>
   )
 };

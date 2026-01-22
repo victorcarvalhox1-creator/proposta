@@ -9,7 +9,8 @@ import {
   CITY_COMPLEXITY_FEE, 
   SALES_VOLUME_INCREMENT, 
   ICONS,
-  DEFAULT_LOGO_URL
+  DEFAULT_LOGO_URL,
+  SYSTEM_PARAMETRIZATION_FEE
 } from './constants';
 
 export default function App() {
@@ -20,7 +21,8 @@ export default function App() {
     hasDifferentState: false,
     hasDifferentCity: false,
     includeTravel: false,
-    hasDP: true
+    hasDP: true,
+    includeSystemParametrization: false
   });
 
   const [uploadedLogo, setUploadedLogo] = useState<string | null>(null);
@@ -64,6 +66,7 @@ export default function App() {
       complexityAddition: complexityTotal,
       totalMonthly,
       diagnosisFee: baseOperationTotal,
+      systemParametrizationFee: data.includeSystemParametrization ? SYSTEM_PARAMETRIZATION_FEE : 0,
       requiredStaff: {
         fiscal: data.numCNPJMatriz,
         dp: data.hasDP ? data.numCNPJMatriz : 0
@@ -243,6 +246,28 @@ export default function App() {
                     </div>
                   </button>
                 </div>
+
+                <div className="flex items-end md:col-span-2">
+                  <button 
+                    onClick={() => setData({...data, includeSystemParametrization: !data.includeSystemParametrization})}
+                    className={`w-full flex flex-col items-start px-6 py-4 rounded-2xl border-2 transition-all duration-300 ${data.includeSystemParametrization ? 'bg-[#1e3a5f] border-[#1e3a5f] text-white shadow-lg shadow-blue-900/20' : 'bg-white border-slate-200 text-slate-400 hover:border-slate-300'}`}
+                  >
+                    <div className="flex justify-between items-center w-full">
+                      <div className="flex items-center gap-3">
+                        <div className={`p-1 rounded ${data.includeSystemParametrization ? 'text-white' : 'text-slate-400'}`}>
+                           <ICONS.Settings />
+                        </div>
+                        <div className="flex flex-col items-start">
+                           <span className="font-bold">Revisão e Parametrização de Sistema</span>
+                           <span className={`text-[10px] font-bold uppercase tracking-widest ${data.includeSystemParametrization ? 'text-emerald-400' : 'text-emerald-600'}`}>+ {formatCurrency(SYSTEM_PARAMETRIZATION_FEE)} (Taxa Única)</span>
+                        </div>
+                      </div>
+                      <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors shrink-0 ${data.includeSystemParametrization ? 'bg-white text-[#1e3a5f]' : 'bg-slate-100'}`}>
+                        {data.includeSystemParametrization && <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>}
+                      </div>
+                    </div>
+                  </button>
+                </div>
               </div>
 
               {/* Equipe Interna */}
@@ -275,21 +300,31 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button 
                   onClick={() => setData({ ...data, hasDifferentState: !data.hasDifferentState })}
-                  className={`flex items-center gap-4 p-5 border-2 rounded-[1.5rem] transition-all ${data.hasDifferentState ? 'border-[#2b5a91] bg-blue-50/50 shadow-inner' : 'border-slate-100 hover:bg-slate-50'}`}
+                  className={`w-full flex flex-col items-start px-6 py-4 rounded-2xl border-2 transition-all duration-300 ${data.hasDifferentState ? 'bg-[#1e3a5f] border-[#1e3a5f] text-white shadow-lg shadow-blue-900/20' : 'bg-white border-slate-200 text-slate-400 hover:border-slate-300'}`}
                 >
-                   <div className="text-left">
-                    <span className="block font-black text-[#1e3a5f] text-sm uppercase">Filial em outro estado</span>
-                    <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-widest">(+ 20% no Piso)</span>
+                   <div className="flex justify-between items-center w-full">
+                    <div className="flex flex-col items-start text-left">
+                       <span className="font-bold text-sm md:text-base">Filial em outro estado</span>
+                       <span className={`text-[10px] font-bold uppercase tracking-widest ${data.hasDifferentState ? 'text-emerald-400' : 'text-emerald-600'}`}>(+ 20% no Piso)</span>
+                    </div>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors shrink-0 ${data.hasDifferentState ? 'bg-white text-[#1e3a5f]' : 'bg-slate-100'}`}>
+                        {data.hasDifferentState && <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>}
+                    </div>
                   </div>
                 </button>
 
                 <button 
                   onClick={() => setData({ ...data, hasDifferentCity: !data.hasDifferentCity })}
-                  className={`flex items-center gap-4 p-5 border-2 rounded-[1.5rem] transition-all ${data.hasDifferentCity ? 'border-[#2b5a91] bg-blue-50/50 shadow-inner' : 'border-slate-100 hover:bg-slate-50'}`}
+                  className={`w-full flex flex-col items-start px-6 py-4 rounded-2xl border-2 transition-all duration-300 ${data.hasDifferentCity ? 'bg-[#1e3a5f] border-[#1e3a5f] text-white shadow-lg shadow-blue-900/20' : 'bg-white border-slate-200 text-slate-400 hover:border-slate-300'}`}
                 >
-                  <div className="text-left">
-                    <span className="block font-black text-[#1e3a5f] text-sm uppercase">Filial em outro município</span>
-                    <span className="text-[10px] text-emerald-600 font-bold uppercase tracking-widest">(+ {formatCurrency(CITY_COMPLEXITY_FEE)})</span>
+                  <div className="flex justify-between items-center w-full">
+                    <div className="flex flex-col items-start text-left">
+                      <span className="font-bold text-sm md:text-base">Filial em outro município</span>
+                      <span className={`text-[10px] font-bold uppercase tracking-widest ${data.hasDifferentCity ? 'text-emerald-400' : 'text-emerald-600'}`}>(+ {formatCurrency(CITY_COMPLEXITY_FEE)})</span>
+                    </div>
+                    <div className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors shrink-0 ${data.hasDifferentCity ? 'bg-white text-[#1e3a5f]' : 'bg-slate-100'}`}>
+                        {data.hasDifferentCity && <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>}
+                    </div>
                   </div>
                 </button>
               </div>
@@ -306,10 +341,10 @@ export default function App() {
                </div>
                <ul className="space-y-4 relative z-10">
                   {[
-                    "Não inclusas as parametrizações do setor financeiro",
-                    "Não inclusas as parametrizações do setor comercial",
+                    !data.includeSystemParametrization && "Não inclusas as parametrizações do setor financeiro",
+                    !data.includeSystemParametrization && "Não inclusas as parametrizações do setor comercial",
                     "Não inclusas despesas com viagens e deslocamento"
-                  ].map((item, idx) => (
+                  ].filter(Boolean).map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-slate-400 text-xs font-medium">
                       <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
                       {item}
@@ -335,6 +370,16 @@ export default function App() {
                     </div>
                     <span className="text-white text-2xl font-black tracking-tight">{formatCurrency(results.diagnosisFee)}</span>
                   </div>
+
+                  {data.includeSystemParametrization && (
+                    <div className="flex justify-between items-end border-b border-white/10 pb-6">
+                      <div className="space-y-1">
+                        <span className="text-white/40 text-[10px] font-black uppercase tracking-widest block">Setup de Sistema</span>
+                        <span className="text-white/80 text-sm font-bold uppercase">Revisão e Parametrização</span>
+                      </div>
+                      <span className="text-white text-2xl font-black tracking-tight">{formatCurrency(results.systemParametrizationFee)}</span>
+                    </div>
+                  )}
 
                   <div className="py-8 bg-gradient-to-b from-white/5 to-transparent rounded-3xl border border-white/5">
                     <span className="text-white/40 text-[10px] uppercase font-black tracking-[0.3em] block mb-4 text-center">Honorário Mensal Projetado</span>
