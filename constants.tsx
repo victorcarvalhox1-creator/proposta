@@ -5,7 +5,7 @@ export const CITY_COMPLEXITY_FEE = 400.00;
 export const DIAGNOSIS_FIXED_FEE = 2000.00;
 export const SALES_VOLUME_INCREMENT = 500.00; 
 
-export const DEFAULT_LOGO_URL = "https://dvzuzslkpcyaupkfkmen.supabase.co/storage/v1/object/sign/midias/WhatsApp%20Image%202026-01-22%20at%2011.35.17.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kMzU2Y2YzNi04NzBhLTRlMGItYjc0Yy00ZWY5NWZjOWMxODAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJtaWRpYXMvV2hhdHNBcHAgSW1hZ2UgMjAyNi0wMS0yMiBhdCAxMS4zNS4xNy5qcGVnIiwiaWF0IjoxNzY5MTAzNzc0LCJleHAiOjE5MjY3ODM3NzR9.1VA4QFACgltGrweHV1s82KJU43X0Ysy3VpiEkhm53Ao";
+export const DEFAULT_LOGO_URL = "https://dvzuzslkpcyaupkfkmen.supabase.co/storage/v1/object/sign/midias/WhatsApp%20Image%202026-01-22%20at%2011.35.17.jpeg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9kMzU2Y2YzNi04NzBhLTRlMGItYjc0Yy00ZWY5NWZjOWMxODAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJtaWRpYXMvV2hhdHNBcHAgSW1hZ2UgMjAyNi0wMS0yMiBhdCAxMS4zNS4xNy5qcGVnIiwiaWF0IjoxNzY5MTA3MzkxLCJleHAiOjE4MDA2NDMzOTF9._3w1UbEy-tNtTF1M6RJsaKTeZVQobHsWdjAW_8jSt58";
 
 export const ICONS = {
   Car: () => (
