@@ -1,6 +1,4 @@
 
-import React from 'react';
-
 export const BASE_PRICE = 5000.00; 
 export const DP_FEE = 1500.00;     
 export const CITY_COMPLEXITY_FEE = 400.00;

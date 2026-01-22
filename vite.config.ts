@@ -7,10 +7,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
-      // Garante que as variáveis existam no build, mesmo que vazias
-      'process.env.API_KEY': JSON.stringify(env.API_KEY || ''),
-      'process.env.VITE_SUPABASE_URL': JSON.stringify(env.VITE_SUPABASE_URL || ''),
-      'process.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(env.VITE_SUPABASE_ANON_KEY || '')
+      // Garante que process.env.API_KEY exista no build, mesmo que vazio
+      'process.env.API_KEY': JSON.stringify(env.API_KEY || '')
     }
   };
 });
