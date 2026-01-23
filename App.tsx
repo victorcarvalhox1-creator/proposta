@@ -36,7 +36,10 @@ export default function App() {
 
   // Cálculo das taxas baseadas na inclusão ou não de DP
   const effectivePiso = BASE_PRICE + (data.hasDP ? DP_FEE : 0);
-  const branchUnitFee = effectivePiso * 0.8; 
+  
+  // Alterado de 0.8 (80%) para 0.6 (60%) conforme solicitado
+  const branchUnitFee = effectivePiso * 0.6; 
+  
   const cnpjUnitFee = effectivePiso;
   const stateComplexityFeeValue = effectivePiso * 0.2; 
 
